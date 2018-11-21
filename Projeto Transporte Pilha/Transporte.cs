@@ -16,7 +16,11 @@ namespace Projeto_Transporte_Pilha
             this.veiculo = veiculo;
             this.qtdeTransportada = qtdeTransportada;
         }
-
+        public Transporte()
+        {
+            this.veiculo = new Veiculo("a", 1);
+            this.qtdeTransportada = 1;
+        }
         internal Veiculo Veiculo
         {
             get

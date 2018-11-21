@@ -10,49 +10,28 @@ namespace Projeto_Transporte_Pilha
     {
         #region atributos
         private string placa;
-        private string capacidade;
+        private int lotacao;
         #endregion
 
         #region propriedades
-        public string Placa
-        {
-            get
-            {
-                return placa;
-            }
 
-            set
-            {
-                placa = value;
-            }
-        }
-
-        public string Capacidade
-        {
-            get
-            {
-                return capacidade;
-            }
-
-            set
-            {
-                capacidade = value;
-            }
-        }
+        public string Placa { get => placa; set => placa = value; }
+        public int Lotacao { get => lotacao; set => lotacao = value; }
         #endregion
 
         #region construtor
-        public Veiculo(string placa, string capacidade)
+        public Veiculo(string placa, int lotacao)
         {
             this.placa = placa;
-            this.capacidade = capacidade;
+            this.lotacao = lotacao;
         }
+
         #endregion
 
         #region métodos
         public string toString()
         {
-            return "Placa: " + placa + "///" + "Capacidade: " + capacidade;
+            return "Placa: " + Placa + "    |   " + "Capacidade: " + lotacao;
         }
         #endregion
 
