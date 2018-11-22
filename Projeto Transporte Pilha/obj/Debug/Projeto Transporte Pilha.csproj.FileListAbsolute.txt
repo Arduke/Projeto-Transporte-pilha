@@ -6,3 +6,9 @@ C:\Users\Kadu\Downloads\Trabalhos Praticos\Projeto-Transporte-pilha-master\Proje
 C:\Users\Kadu\Downloads\Trabalhos Praticos\Projeto-Transporte-pilha-master\Projeto Transporte Pilha\bin\Debug\Projeto Transporte Pilha.pdb
 C:\Users\Kadu\Downloads\Trabalhos Praticos\Projeto-Transporte-pilha-master\Projeto Transporte Pilha\obj\Debug\Projeto Transporte Pilha.exe
 C:\Users\Kadu\Downloads\Trabalhos Praticos\Projeto-Transporte-pilha-master\Projeto Transporte Pilha\obj\Debug\Projeto Transporte Pilha.pdb
+C:\Users\aluno\Downloads\Projeto-Transporte-pilha-master\Projeto-Transporte-pilha-master\Projeto Transporte Pilha\bin\Debug\Projeto Transporte Pilha.exe.config
+C:\Users\aluno\Downloads\Projeto-Transporte-pilha-master\Projeto-Transporte-pilha-master\Projeto Transporte Pilha\obj\Debug\Projeto Transporte Pilha.exe
+C:\Users\aluno\Downloads\Projeto-Transporte-pilha-master\Projeto-Transporte-pilha-master\Projeto Transporte Pilha\obj\Debug\Projeto Transporte Pilha.pdb
+C:\Users\aluno\Downloads\Projeto-Transporte-pilha-master\Projeto-Transporte-pilha-master\Projeto Transporte Pilha\obj\Debug\Projeto Transporte Pilha.csprojResolveAssemblyReference.cache
+C:\Users\aluno\Downloads\Projeto-Transporte-pilha-master\Projeto-Transporte-pilha-master\Projeto Transporte Pilha\bin\Debug\Projeto Transporte Pilha.exe
+C:\Users\aluno\Downloads\Projeto-Transporte-pilha-master\Projeto-Transporte-pilha-master\Projeto Transporte Pilha\bin\Debug\Projeto Transporte Pilha.pdb

@@ -10,12 +10,30 @@ namespace Projeto_Transporte_Pilha
     {
         #region atributos
         private Queue<Viagem> listaviagens;
+
+
+
+
         #endregion
 
         #region propriedades
-        internal Queue<Viagem> Listaviagens { get => listaviagens; set => listaviagens = value; }
-        #endregion
+        internal Queue<Viagem> Listaviagens
+        {
+            get
+            {
+                return listaviagens;
+            }
 
+            set
+            {
+                listaviagens = value;
+            }
+        }
+        #endregion
+        public Viagens()
+        {
+            Listaviagens = new Queue<Viagem>();
+        }
         #region construtor
 
         #endregion
@@ -23,7 +41,7 @@ namespace Projeto_Transporte_Pilha
         #region métodos
         public void incluir  (Viagem viagem)
         {
-            listaviagens.Enqueue(viagem);
+            Listaviagens.Enqueue(viagem);
         }
         #endregion
 

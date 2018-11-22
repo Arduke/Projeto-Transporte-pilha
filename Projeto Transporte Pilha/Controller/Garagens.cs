@@ -17,16 +17,40 @@ namespace Projeto_Transporte_Pilha
         #endregion
 
         #region propriedades
-        public bool JornadaAtiva { get => jornadaAtiva; set => jornadaAtiva = value; }
-        internal List<Garagem> ListaGaragens { get => listaGaragens; set => listaGaragens = value; }
+
+        public bool JornadaAtiva
+        {
+            get
+            {
+                return jornadaAtiva;
+            }
+
+            set
+            {
+                jornadaAtiva = value;
+            }
+        }
+
+        internal List<Garagem> ListaGaragens
+        {
+            get
+            {
+                return listaGaragens;
+            }
+
+            set
+            {
+                listaGaragens = value;
+            }
+        }
 
         #endregion
 
         #region construtor
         public Garagens()
         {
-            listaGaragens = new List<Garagem>();
-            jornadaAtiva = false;
+            ListaGaragens = new List<Garagem>();
+            JornadaAtiva = false;
         }
 
         #endregion
@@ -34,12 +58,12 @@ namespace Projeto_Transporte_Pilha
         #region métodos
         public void incluir (Garagem garagem)
         {
-            listaGaragens.Add(garagem);
+            ListaGaragens.Add(garagem);
         }
 
         public void iniciarJornada()
         {
-            if (jornadaAtiva)
+            if (JornadaAtiva)
             {
                 Console.WriteLine("Garagem já iniciou a jornada.");
 
@@ -52,13 +76,29 @@ namespace Projeto_Transporte_Pilha
             }
         }
 
-        /*public List<Transporte> encerrarJornada()
+        public List<Transporte> encerrarJornada()
         {
+            jornadaAtiva = false;
+            //verificar
 
+            List<Transporte> listTransporte = new List<Transporte>();
+            return listTransporte;
         }
-        */
-        #endregion
+        public Garagem Pesquisar(Garagem garagem)
+        {
+            Garagem aux = new Garagem();
 
+            foreach (Garagem ga in ListaGaragens)
+            {
+                if (ga.Equals(garagem))
+                {
+                    aux = ga;
+                }
+            }
+            return aux;
+        }
+        #endregion
+        
 
     }
 }

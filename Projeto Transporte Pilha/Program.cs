@@ -13,16 +13,16 @@ namespace Projeto_Transporte_Pilha
             //variaveis
             int resp = 0;
             int idgaragem;
+            int idgaragem2;
             string placa;
             int lotacao;
-            int id;
+            
             string local;
             int auxiliar = 0;
-            Garagem aux = new Garagem();
-
+          
             Veiculos controlerVeiculos = new Veiculos();
             Garagens ControlerGaragens = new Garagens();
-
+            Viagens controlerViagens = new Viagens();
             #region pretederminações
             //adicionando os veiculos já predeterminados
 
@@ -47,6 +47,7 @@ namespace Projeto_Transporte_Pilha
                 Console.WriteLine("6.Listar veiculos em uma garagem.");
                 Console.WriteLine("7.Listar veiculos.");
                 Console.WriteLine("8.Adicionar veiculos a uma garagem especifica.");
+                Console.WriteLine("9.Liberar viagem de uma determinada origem para um determinado destino.");
                 resp = Convert.ToInt32(Console.ReadLine());
 
 
@@ -63,17 +64,24 @@ namespace Projeto_Transporte_Pilha
 
                     case 1:
                         Console.Clear();
-                        Console.WriteLine("Digite a placa do veiculo");
-                        placa = Console.ReadLine();
-                        Console.WriteLine("Digite a capacidade do veiculo");
-                        lotacao = Convert.ToInt32(Console.ReadLine());
-                        
-                        controlerVeiculos.adicionar(new Veiculo(placa, lotacao));
-
-                        Console.WriteLine("veiculos cadastrados porem não alocados em garagens:");
-                        foreach (Veiculo veiculo in controlerVeiculos.ListaVeiculos)
+                        if (!ControlerGaragens.JornadaAtiva)
                         {
-                            Console.WriteLine(veiculo.toString());
+                            Console.WriteLine("Digite a placa do veiculo");
+                            placa = Console.ReadLine();
+                            Console.WriteLine("Digite a capacidade do veiculo");
+                            lotacao = Convert.ToInt32(Console.ReadLine());
+
+                            controlerVeiculos.adicionar(new Veiculo(placa, lotacao));
+
+                            Console.WriteLine("veiculos cadastrados porem não alocados em garagens:");
+                            foreach (Veiculo veiculo in controlerVeiculos.ListaVeiculos)
+                            {
+                                Console.WriteLine(veiculo.toString());
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Jornada já iniciada");
                         }
 
                         Console.ReadKey();
@@ -85,10 +93,10 @@ namespace Projeto_Transporte_Pilha
                         Console.WriteLine("Digite o local da garagem");
                         local = Console.ReadLine();
                         Console.WriteLine("Digite o id");
-                        id = Convert.ToInt32(Console.ReadLine());
+                        idgaragem = Convert.ToInt32(Console.ReadLine());
 
 
-                        ControlerGaragens.incluir(new Garagem(id,local));
+                        ControlerGaragens.incluir(new Garagem(idgaragem,local));
                         Console.ReadKey();
                         Console.Clear();
                         break;
@@ -96,15 +104,18 @@ namespace Projeto_Transporte_Pilha
                         Console.Clear();
                         Console.WriteLine("Jornada Iniciada");
 
-
+                        ControlerGaragens.iniciarJornada();
                         while (auxiliar < (controlerVeiculos.ListaVeiculos.Count() - 1))
                         {
                             foreach (Garagem garagem in ControlerGaragens.ListaGaragens)
                             {
                                 Console.WriteLine(garagem.toString());
-                                Console.WriteLine(controlerVeiculos.ListaVeiculos[auxiliar]);
+                                Console.WriteLine(controlerVeiculos.ListaVeiculos[auxiliar].toString());
                                 garagem.adicionarVeiculo(controlerVeiculos.ListaVeiculos[auxiliar]);
                                 auxiliar++;
+                                
+                                Console.ReadKey();
+                                Console.Clear();
                             }
                         }
 
@@ -113,17 +124,23 @@ namespace Projeto_Transporte_Pilha
                         break;
                     case 4:
                         Console.Clear();
-                        Console.WriteLine("Programa sera Encerrando");
+                        ControlerGaragens.encerrarJornada();
+                        Console.WriteLine("Jornada Encerrada");
                         Console.ReadKey();
                         Console.Clear();
                         break;
                     case 5:
                         Console.Clear();
-                       
+
+                        
                         foreach (Garagem garagem in ControlerGaragens.ListaGaragens)
                         {
                             Console.WriteLine(garagem.toString());
                         }
+
+                        //aqui controler
+                        Garagem garagemPesquisada =  ControlerGaragens.Pesquisar(new Garagem(1));
+                        Console.WriteLine(garagemPesquisada.toString());
 
                         Console.ReadKey();
                         Console.Clear();
@@ -133,16 +150,10 @@ namespace Projeto_Transporte_Pilha
                         Console.WriteLine("Digite o Codigo da Garagem:");
                         idgaragem = Convert.ToInt32(Console.ReadLine());
 
-                        
+
                         //pesquisar garagem
-                        foreach (Garagem garagem in ControlerGaragens.ListaGaragens)
-                        {
-                            if (garagem.Equals(new Garagem(idgaragem)))
-                            {
-                                aux = garagem;
-                            }
-                        }                        
-                        
+                        Garagem aux = ControlerGaragens.Pesquisar(new Garagem(idgaragem));
+
                         //listarveiculo
                         foreach (Veiculo veiculo in aux.Veiculos)
                         {
@@ -168,18 +179,28 @@ namespace Projeto_Transporte_Pilha
                         Console.WriteLine("Digite o codigo da garagem");
                         idgaragem = Convert.ToInt32(Console.ReadLine());
 
-                        //pesquisar garagem
-                        foreach (Garagem garagem in ControlerGaragens.ListaGaragens)
-                        {
-                            if (garagem.Equals(new Garagem(idgaragem)))
-                            {
-                                aux = garagem;
-                            }
-                        }
-                        aux.adicionarVeiculo(new Veiculo(placa, lotacao));
+                        ControlerGaragens.Pesquisar(new Garagem(idgaragem));
+
+
 
                         Console.ReadKey();
                         Console.Clear();
+                        break;
+                    case 9:
+                        Console.Clear();
+                        Console.WriteLine("Digite o id da Garagem Origem");
+                        idgaragem = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Digite o id da Garagem Origem");
+                        idgaragem2 = Convert.ToInt32(Console.ReadLine());
+
+                        //pesquisar garagem destino
+                        ControlerGaragens.Pesquisar(new Garagem(idgaragem));
+                        //pesquisar garagem origem
+                        ControlerGaragens.Pesquisar(new Garagem(idgaragem2));
+                        //pop da origem e push do destino
+                        ControlerGaragens.Pesquisar(new Garagem(idgaragem2)).Veiculos.Push(ControlerGaragens.Pesquisar(new Garagem(idgaragem)).Veiculos.Pop());
+
+                        controlerViagens.incluir(new Viagem(ControlerGaragens.Pesquisar(new Garagem(idgaragem)), ControlerGaragens.Pesquisar(new Garagem(idgaragem2)), ControlerGaragens.Pesquisar(new Garagem(idgaragem2)).Veiculos.Pop()));
                         break;
                     default:
                         Console.Clear();

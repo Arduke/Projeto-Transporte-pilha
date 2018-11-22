@@ -12,33 +12,86 @@ namespace Projeto_Transporte_Pilha
         private Garagem origem;
         private Garagem destino;
         private Veiculo veiculo;
-        private int id;
+        static private int id = 0;
 
-        
+
+
+
 
 
         #endregion
 
         #region propriedades
-        public int Id { get => id; set => id = value; }
-        internal Garagem Origem { get => origem; set => origem = value; }
-        internal Garagem Destino { get => destino; set => destino = value; }
-        internal Veiculo Veiculo { get => veiculo; set => veiculo = value; }
+        internal Garagem Origem
+        {
+            get
+            {
+                return origem;
+            }
+
+            set
+            {
+                origem = value;
+            }
+        }
+
+        internal Garagem Destino
+        {
+            get
+            {
+                return destino;
+            }
+
+            set
+            {
+                destino = value;
+            }
+        }
+
+        internal Veiculo Veiculo
+        {
+            get
+            {
+                return veiculo;
+            }
+
+            set
+            {
+                veiculo = value;
+            }
+        }
+
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
+
         #endregion
 
         #region construtor
 
-        public Viagem(Garagem origem, Garagem destino, Veiculo veiculo, int id)
+        public Viagem(Garagem origem, Garagem destino, Veiculo veiculo)
         {
-            this.origem = origem;
-            this.destino = destino;
-            this.veiculo = veiculo;
-            this.id = id;
+            this.Origem = origem;
+            this.Destino = destino;
+            this.Veiculo = veiculo;
+            this.Id++;
         }
         #endregion
 
         #region métodos
-
+        public string toString()
+        {
+            return "Id: " + this.Id + " // Destino: " + this.Destino + " //Origem: " + this.Origem + " // ";
+        }
         #endregion
 
 

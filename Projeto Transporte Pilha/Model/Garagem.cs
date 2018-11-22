@@ -85,17 +85,25 @@ namespace Projeto_Transporte_Pilha
         #region métodos
         public int qtdeDeVeiculos()
         {
-            return veiculos.Count(); ;
+            if (veiculos.Count() != 0)
+            {
+                return veiculos.Count();
+            }
+            else
+            {
+                return 0;
+            }
         }
         public int potencialDeTranspote()
         {
             int pot = 0;
-
-           foreach (Veiculo v in veiculos)
+            if (veiculos.Count() != 0)
             {
-                pot += v.Lotacao;
+                foreach (var v in veiculos)
+                {
+                    pot += v.Lotacao;
+                }
             }
-
             return pot;
         }
         public void adicionarVeiculo(Veiculo veiculo)
